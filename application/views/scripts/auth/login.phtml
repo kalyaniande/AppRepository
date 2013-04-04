@@ -1,0 +1,18 @@
+<?php $this->headTitle()->append('Login'); ?>
+<h3>Login</h3>
+<?php
+if($this->error_message) echo '<span style="color:red;font-size:11px;">'.$this->error_message.'</span><br>';
+    $this->loginForm->setAttribs(array('class' => 'form-horizontal'));
+    $this->loginForm->setAction($this->url());
+    echo $this->loginForm;
+    
+?>
+
+You don`t have an account ! 
+<a href="<?php echo $this->url(
+    array(
+        'controller' => 'User',
+        'action'     => 'signup'
+    ),
+    'default',
+    true) ?>">SignUp</a>

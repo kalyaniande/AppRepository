@@ -1,0 +1,33 @@
+    <!-- application/layouts/scripts/layout.phtml -->
+    <?php echo $this->doctype() ?>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <!--<title>Zend Framework Quickstart Application</title>-->
+      <?php echo $this->headTitle(); ?>
+      <?php echo $this->headLink(); ?>
+		
+    </head>
+<body>
+       <div id="navigation-bar">	
+    </div>
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <a class="brand">Zend</a>
+   
+    </div>
+        
+    <?php if(Zend_Auth::getInstance()->hasIdentity()) { ?>
+        <a style="float: right; margin: 10px;" href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout')); ?>">Logout</a>
+    <?php  }else { ?>
+        <a style="float: right; margin: 10px;" href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>">Login</a>
+    <?php } ?>    
+        
+    </div>
+       
+  <div class="container">
+       
+    <?php echo $this->layout()->content ?>
+    </div>
+       
+    </body>
