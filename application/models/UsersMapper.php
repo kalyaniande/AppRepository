@@ -45,5 +45,22 @@
                 return $id;
             }
         }
+        public function fetchAll() {
+        
+            $resultSet = $this->getDbTable()->fetchAll();
+            $entries   = array();
+            foreach ($resultSet as $row) {
+                //$entry = new Application_Model_Users();
+                $entry = array();
+                $entry = array('path' => $row->image_path,
+                               'rname' => $row->name);
+                /*$entry->setId($row->id)
+                      ->setUsername($row->username)
+                      ->setPassword($row->password);*/
+                $entries[] = $entry;
+            }
+            return $entries;
+        
+        }
     }
 ?>

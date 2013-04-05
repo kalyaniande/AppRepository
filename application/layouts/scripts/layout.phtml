@@ -4,30 +4,55 @@
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <!--<title>Zend Framework Quickstart Application</title>-->
+          
+      <script src="/zend-app/application/views/css/foundation-4.1.1/js/vendor/jquery.js"></script>
+      <script src="/zend-app/application/views/css/foundation-4.1.1/js/vendor/custom.modernizr.js"></script>
+   
       <?php echo $this->headTitle(); ?>
       <?php echo $this->headLink(); ?>
-		
+      
     </head>
 <body>
-       <div id="navigation-bar">	
-    </div>
-    <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-    <a class="brand">Zend</a>
    
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><a href="#">Zend</a></h1>
+    </li>
+   
+  </ul>
+    <section class="top-bar-section">
+        <?php 
+    $this->navigation()->menu()->setPartial(array('navigation.phtml','default'));
+    
+    echo $this->navigation()->menu()->render(); ?>
+   
+    </section>
+</nav>
+ 
+<!--<div class="row">
+    <div class="large-12 columns">
+      
+      <img src="http://placehold.it/1600x600&text=Header">
+          
+</div>-->
+</div>
+
     </div>
-        
-    <?php if(Zend_Auth::getInstance()->hasIdentity()) { ?>
-        <a style="float: right; margin: 10px;" href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout')); ?>">Logout</a>
-    <?php  }else { ?>
-        <a style="float: right; margin: 10px;" href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>">Login</a>
-    <?php } ?>    
-        
+</div>  
+    <div class="row">
+        <div class="large-9 columns">
+            <?php echo $this->layout()->content ?>
+        </div>
     </div>
-       
-  <div class="container">
-       
-    <?php echo $this->layout()->content ?>
-    </div>
-       
+<script>
+  document.write('<script src=/zend-app/application/views/css/foundation-4.1.1/js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
+</script>
+ <script src="/zend-app/application/views/css/foundation-4.1.1/js/foundation.min.js"></script>
+ <script>
+  $(document).foundation();
+</script>
     </body>

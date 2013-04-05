@@ -1,4 +1,26 @@
 <!-- application/views/scripts/user/signup.phtml -->
+
+<script type="text/javascript">
+function getuser() {
+    var username = $("#username").val();
+    $.ajax({
+            type: "POST",
+            url: "getldapuser",
+            dataType: "json",
+            data: { username: username }
+            }).done(function( data ) {
+            if(data['name'] != '') {
+               
+                $('#name').val(data['name']);
+                $('#mobile').val(data['mobile']);
+                $('#email').val(data['mail']);
+                
+            }
+    });
+               
+}
+</script>
+
 <h2>Create Your Account</h2>    
 Please use the form below to sign up!
 

@@ -1,3 +1,24 @@
-<?php $this->headTitle()->append('Welcome'); ?>
-
-<h3>Welcome <?php echo $this->user_name; ?></h3>
+           <h4>Recently Registered Users</h4>
+            <div class="panel">
+                <div class="row">
+                    <?php foreach($this->users as $user) { ?>
+                    <div class="large-3 columns">
+                     <img style="width:276px;height:125px;" src="<?php echo '/zend-app/application/users-images/'.$user['path']; ?>">
+                    </div>
+                    <?php } ?>
+                    
+                </div>
+            </div>
+           <div class="row">
+               <div class="large-12 columns">
+               <h4>All Users</h4>
+                    <ul data-orbit data-options="timer_speed:2500; bullets:false;">  
+                    <?php foreach($this->users as $user) { ?>                    
+                     <li>
+                        <img style="width:200px;height:125px;" src="<?php echo '/zend-app/application/users-images/'.$user['path']; ?>">
+                        
+                     </li>                    
+                    <?php } ?>
+                    </ul>
+           </div>
+           </div>

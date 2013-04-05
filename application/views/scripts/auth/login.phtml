@@ -1,13 +1,40 @@
 <?php $this->headTitle()->append('Login'); ?>
 <h3>Login</h3>
+
+
 <?php
 if($this->error_message) echo '<span style="color:red;font-size:11px;">'.$this->error_message.'</span><br>';
     $this->loginForm->setAttribs(array('class' => 'form-horizontal'));
     $this->loginForm->setAction($this->url());
-    echo $this->loginForm;
+    //echo $this->loginForm;
+    
+    
     
 ?>
+<form method="<?php echo $this->loginForm->getMethod() ?>" action="<?php echo
+$this->loginForm->getAction()?>">
+<fieldset>
+<!--    <legend>Fieldset</legend>-->
 
+<div class="row">
+    <div class="large-4 columns">
+        <label><?php echo $this->loginForm->username->renderLabel(); ?></label>
+        <?php echo $this->loginForm->username->renderViewHelper(); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="large-4 columns">
+        <label><?php echo $this->loginForm->password->renderLabel(); ?></label>
+        <?php echo $this->loginForm->password->renderViewHelper(); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="large-4 columns">
+       <?php  echo $this->loginForm->submit->renderViewHelper(); ?>               
+    </div>
+</div>
+</fieldset>
+</form>
 You don`t have an account ! 
 <a href="<?php echo $this->url(
     array(

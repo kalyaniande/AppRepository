@@ -1,0 +1,42 @@
+<?php 
+  echo '<ul class="left">';
+    // loop root level (only has Home, but later may have an Admin root page?)
+    foreach ($this->container as $page) {
+        
+        if($page == 'Login' || $page == 'Logout') {
+            $right_html = '<ul class="right">';
+            $isActive = $page->isActive(false);
+            $liClass = $isActive ? ' class="active"' : '';
+            $right_html .= '<li ' . $liClass . '>' . $this->menu()->htmlify($page). '</li>';
+            $right_html .= '</ul>';  
+            continue;
+        }
+        // check if it is active (not recursive)
+        $isActive = $page->isActive(false);
+        $liClass = $isActive ? ' class="active"' : '';
+        
+        //Check if it is visible 
+        $isVisible = $page->visible; 
+        if($isVisible == 0) {
+            $liClass = ' class="hide-menu"';
+        }
+        
+        echo '<li ' . $liClass . '>' . $this->menu()->htmlify($page) . '</li>', PHP_EOL;
+        // loop next level
+        foreach ($page as $page) {    
+            
+            // check if it is active (recursive)
+            $isActive = $page->isActive(true);
+            $liClass = $isActive ? ' class="active"' : '';
+            
+            //Check if it is visible 
+            $isVisible = $page->visible; echo $page->visible;
+            if($isVisible == 0) {
+                $liClass = ' class="hide-menu"';echo $liClass;
+            }  
+            echo '<li ' . $liClass . '>' . $this->menu()->htmlify($page) . '</li>', PHP_EOL;
+        }
+    }
+    echo '</ul>';
+    echo $right_html;
+?>

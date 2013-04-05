@@ -23,7 +23,7 @@ class Application_Form_Signup extends Zend_Form
 	    'required'   => true,
             'filters'    => array('StringTrim'),
 	    'validators' => array(array('validator' =>
-            'StringLength','options' => array(0, 15))
+            'StringLength','options' => array(0, 25))
 	    )
             ));
          $this->addElement('text', 'email', array(
@@ -37,6 +37,7 @@ class Application_Form_Signup extends Zend_Form
          $this->addElement('text', 'username', array(
             'label'   => 'User Name:',
 	    'required'   => true,
+            'attribs' => array('onkeyup' => 'getuser();'),
             'filters'    => array('StringTrim'),
 	    'validators' => array(array('validator' =>
             'StringLength','options' => array(0, 30))
@@ -44,7 +45,7 @@ class Application_Form_Signup extends Zend_Form
             ));
          $this->addElement('password', 'password', array(
             'label'   => 'Password:',
-	    'required'   => true,
+	    //'required'   => true,
             'filters'    => array('StringTrim'),
 	    'validators' => array(array('validator' =>
             'StringLength','options' => array(0, 30))

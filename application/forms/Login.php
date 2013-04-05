@@ -66,11 +66,11 @@ class Application_Form_Login extends Zend_Form
               'ignore'   => true,
               'decorators' => $this->submitdecorators,
               'label'    => 'Login',
-              'attribs' => array('class' => 'btn btn-info'),
+              'attribs' => array('class' => 'tiny button'),
               ));
        $this->setDecorators(array('FormElements',         
 
-                            array(array('data'=>'HtmlTag'),array('tag'=>'table')),          
+                            array(array('data'=>'HtmlTag'),array('tag'=>'fieldset')),          
 
                             'Form'  
 
