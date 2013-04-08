@@ -47,13 +47,19 @@
         }
         public function fetchAll() {
         
-            $resultSet = $this->getDbTable()->fetchAll();
+            $db = Zend_Db_Table::getDefaultAdapter();
+
+            $select = $db->select();
+
+            $select->from('users')
+                   ->order('id DESC');
+            $resultSet = $db->fetchAll($select);
             $entries   = array();
             foreach ($resultSet as $row) {
                 //$entry = new Application_Model_Users();
                 $entry = array();
-                $entry = array('path' => $row->image_path,
-                               'rname' => $row->name);
+                $entry = array('path' => $row['image_path'],
+                               'rname' => $row['name']);
                 /*$entry->setId($row->id)
                       ->setUsername($row->username)
                       ->setPassword($row->password);*/
